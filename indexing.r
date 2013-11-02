@@ -1,5 +1,8 @@
 # Indexing
 
+# How indexing is formatted:
+# variable[ row(s), column(s) ]
+
 # Create a variables of five elements
 x <- c(1, 4, 9, 16, 25)
 y <- c(1, 4, 4, 36, 24)
