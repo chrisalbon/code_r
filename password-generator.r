@@ -8,7 +8,7 @@ url <- "http://chrisralbon.com"
 # password generating function
 password <- function(x)
 {
-  length=nchar(x)
+  length=nchar(x) - sample(1:10, 5)
   random.string <- c(1:1)
   for (i in 1:1)
   {
