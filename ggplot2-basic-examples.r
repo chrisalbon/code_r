@@ -76,3 +76,6 @@ ggplot(simData, aes(x = NumVar1, y = NumVar2, color = FacVar1)) + geom_point()
 
 # create a scatterplot with each dot sized by a third variable
 ggplot(simData, aes(x = NumVar1, y = NumVar2, size = NumVar3)) + geom_point()
+
+# Turn off external devices
+dev.off()

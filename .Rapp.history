@@ -1,1 +1,96 @@
 getwd()
+data <- read.csv("/Users/chrisralbon/Downloads/data.csv")#
+#
+library(stringr)#
+library(wordcloud)#
+library(tm)#
+library(ggplot2)#
+#
+ggplot(data, aes(x = region)) + geom_histogram() + xlab("In which part of the world do you work?")  #
+#
+ggplot(data, aes(x = workalone)) + geom_histogram() + xlab("Do you usually work alone or co-work with other humans?")  #
+#
+ggplot(data, aes(x = travel)) + geom_histogram() + xlab("Do you travel for work more than once per month?")  #
+#
+ggplot(data, aes(x = meetings)) + geom_histogram() + xlab("do you have regular meetings with other people on the team?")  #
+#
+wordcloud(data$commqual, scale=c(5,0.5), max.words=100, random.order=FALSE, rot.per=0.35, use.r.layout=FALSE, colors=brewer.pal(8, "Dark2"))#
+skype <- str_detect(data$most.effective, fixed("Skype"))#
+skype.n <- length(skype[skype==TRUE])#
+#
+email <- str_detect(data$most.effective, fixed("Email"))#
+email.n <- length(email[email==TRUE])#
+#
+phone <- str_detect(data$most.effective, fixed("Phone Calls"))#
+phone <- length(phone[phone==TRUE])#
+#
+github <- str_detect(data$most.effective, fixed("GitHub"))#
+github.n <- length(github[github==TRUE])#
+#
+team.page <- str_detect(data$most.effective, fixed("Team Page"))#
+team.page.n <- length(team.page[team.page==TRUE])#
+#
+face.2.face <- str_detect(data$most.effective, fixed("Face to face"))#
+face.2.face.n <- length(face.2.face[face.2.face==TRUE])#
+#
+basecamp <- str_detect(data$most.effective, fixed("Basecamp"))#
+basecamp.n <- length(basecamp[basecamp==TRUE])#
+#
+sqwiggle <- str_detect(data$most.effective, fixed("Sqwiggle"))#
+sqwiggle.n <- length(sqwiggle[sqwiggle==TRUE])#
+#
+twitterDM <- str_detect(data$most.effective, fixed("Twitter Direct Messages"))#
+twitterDM.n <- length(twitterDM[twitterDM==TRUE])#
+#
+# Pie Chart#
+# Original source: http://www.statmethods.net/graphs/pie.html#
+#
+# Create some casualty numbers#
+slices <- c(skype.n, email.n, phone, github.n, face.2.face.n, basecamp.n, sqwiggle.n, twitterDM.n)#
+#
+# Create labels that correspond to the casualty numbers#
+lbls <- c("Skype", "Email", "Phone", "Github", "Face to Face", "Basecamp", "Sqwiggle", "Twitter DM")#
+#
+# Create Percents For Each Slice#
+pct <- round(slices/sum(slices)*100)#
+#
+# Add Percents To Labels#
+lbls <- paste(lbls, pct)#
+#
+# Add The Percent Symbol To Labels#
+lbls <- paste(lbls,"%",sep="")#
+#
+# Create a pie chart with labels, with each slice colored by the terrain color pallete#
+pie(slices,labels = lbls, col=terrain.colors(length(lbls)), main="Which Tools Are Most Useful?") #
+library(ggplot2)#
+library(gridExtra)#
+#
+dev.off()#
+#
+# Create test data.#
+dat = data.frame(count=slices, category=lbls)#
+#
+# Add addition columns, needed for drawing with geom_rect.#
+dat$fraction = dat$count / sum(dat$count)#
+dat = dat[order(dat$fraction), ]#
+dat$ymax = cumsum(dat$fraction)#
+dat$ymin = c(0, head(dat$ymax, n=-1))#
+#
+p1 = ggplot(dat, aes(fill=category, ymax=ymax, ymin=ymin, xmax=4, xmin=3)) +#
+  geom_rect() +#
+  coord_polar(theta="y") +#
+  xlim(c(0, 4)) +#
+  labs(title="Basic ring plot")#
+#
+p2 = ggplot(dat, aes(fill=category, ymax=ymax, ymin=ymin, xmax=4, xmin=3)) +#
+  geom_rect(colour="grey30") +#
+  coord_polar(theta="y") +#
+  xlim(c(0, 4)) +#
+  theme_bw() +#
+  theme(panel.grid=element_blank()) +#
+  theme(axis.text=element_blank()) +#
+  theme(axis.ticks=element_blank()) +#
+  labs(title="Customized ring plot")#
+library(gridExtra)#
+png("ring_plots_1.png", height=4, width=8, units="in", res=120)#
+grid.arrange(p1, p2, nrow=1)
