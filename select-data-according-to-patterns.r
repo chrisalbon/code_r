@@ -1,4 +1,7 @@
 # Selecting Data According To Patterns
 
+# create simulated district names
+district <- factor(c("NORTH", "NORTHWEST", "CENTRAL", "SOUTH", "SOUTHWEST", "WESTERN"))
+
 #Select all the cases where Baltimore's district name is "North"
-bmore.crime$district[grep("NORTH", as.character(bmore.crime$district))] # 
+district[grep("NORTH", as.character(district))]

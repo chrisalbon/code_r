@@ -4,23 +4,36 @@
 
 # R has a number of functions avaliable for manipulating text.
 
+# create simulated district crime name
+district <- factor(c("NORTH", "NORTHWEST", "CENTRAL", "SOUTH", "SOUTHWEST", "WESTERN"))
+
 # Count the number of characters in each individual character string in an object
 
-levels(bmore.crime$district) # display each district's name
-nchar(levels(bmore.crime$district)) # display the number of characters in each district's name.
+# display each district's name
+levels(district) 
+
+# display the number of characters in each district's name
+nchar(district)) 
 
 # You can also display text without quotes, although it is rare you would want to do so.
 
-levels(bmore.crime$district) # display each police district's name
-noquote(levels(bmore.crime$district)) # display each police district's name without quotes
+# display each police district's name
+levels(district) 
+
+# display each police district's name without quotes
+noquote(levels(district)) 
 
 # R can add characters to a vector of character strings using the paste function
 
-paste(levels(bmore.crime$district), "DISTRICT") # Add "DISTRICT" to the name of each police district
+# Add "DISTRICT" to the name of each police district
+paste(levels(district), "DISTRICT") 
 
 # And without a space between the character strings
-paste(levels(bmore.crime$district), "DISTRICT", sep="") # Add "DISTRICT" to the name of each police district
+
+# Add "DISTRICT" to the name of each police district
+paste(levels($district), "DISTRICT", sep="") 
 
 # Extracting Segments Of Character Strings using Substring Function
 
-substr(bmore.crime$district, 1, 5) # Extract characters from district names, starting at the 1st character and ending at the 5th character
+# Extract characters from district names, starting at the 1st character and ending at the 5th character
+substr(district, 1, 5) 

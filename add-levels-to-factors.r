@@ -6,5 +6,9 @@
 
 # The reason is that in order to manipulate factors, you have to manipulate it's levels, not the names of each category.
 
+# create simulated distract name data
+
+district <- c("NORTH", "NORTHWEST", "CENTRAL", "SOUTH", "SOUTHWEST", "EAST")
+
 # remake district categories with the combination of district categories and a new SOUTH CENTRAL category
-levels(bmore.crime$district) <- c(levels(bmore.crime$district), "SOUTH CENTRAL")
+levels(district) <- c(levels(district), "SOUTH CENTRAL")
