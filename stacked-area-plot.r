@@ -12,7 +12,7 @@ set.seed(3)
 
 # create a sequence
 t.step <- seq(0,20)
- s
+
 # create some group names
 grps <- letters[1:10]
 

@@ -1,4 +1,4 @@
-data <- read.csv("/Users/chrisralbon/Downloads/data.csv")
+data <- read.csv("/Users/chrisralbon/Dropbox/team.survey/data.csv")
 
 library(stringr)
 library(wordcloud)
@@ -123,28 +123,7 @@ dat.t = dat.t[order(dat.t$fraction), ]; dat.t
 dat.t$ymax = cumsum(dat.t$fraction); dat.t$ymax
 dat.t$ymin = c(0, head(dat.t$ymax, n=-1));dat.t$ymin
 
-p1 = ggplot(dat.t, aes(fill=category, ymax=dat.t$ymax, ymin=dat.t$ymin, xmax=4, xmin=3)) +
-  geom_rect(colour="grey30") +
-  coord_polar(theta="y") +
-  xlim(c(0, 4)) +
-  theme_bw() +
-  theme(panel.grid=element_blank()) +
-  theme(axis.text=element_blank()) +
-  theme(axis.ticks=element_blank()) +
-  labs(title="Most Used")
-
-p2 = ggplot(dat, aes(fill=category, ymax=dat$ymax, ymin=dat$ymin, xmax=4, xmin=3)) +
-  geom_rect(colour="grey30") +
-  coord_polar(theta="y") +
-  xlim(c(0, 4)) +
-  theme_bw() +
-  theme(panel.grid=element_blank()) +
-  theme(axis.text=element_blank()) +
-  theme(axis.ticks=element_blank()) +
-  labs(title="Most Useful")
-
-grid.arrange(p1, p2, nrow=1)
-
+  
 
 dev.off()
 
@@ -188,10 +167,6 @@ whatsapp.t.n <- length(whatsapp.t[whatsapp.t==TRUE])
 
 wiki.t <- str_detect(data$tools, fixed("Team Wiki"))
 wiki.t.n <- length(wiki.t[wiki.t==TRUE])
-
-
-
-
 
 skype <- str_detect(data$most.effective, fixed("Skype"))
 skype.n <- length(skype[skype==TRUE])
