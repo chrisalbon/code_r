@@ -7,6 +7,7 @@ z <- runif(1000)
 a <- runif(1000)
 df <- data.frame(x, y, z, a)
 
+# create a vector of weighs
 w <- runif(1000)
 
 # sample 10 rows of the dataframe at pseudorandom, without replacement

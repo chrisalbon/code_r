@@ -1,10 +1,16 @@
 # Cleaing Up OKF's Dirty London Transport Data
 
+# load the stringr package
+library(stringr)
+
 # load the csv file into R
 lon.df <- read.csv("http://data.london.gov.uk/datafiles/transport/tfl_passengers.csv", header=TRUE)
 
 # view the top few lines of the dataset
 head(lon.df)
+
+# view the bottom few lines of the dataset
+tail(lon.df)
 
 # look at the structure of the dataset, take careful note of the class of the columns
 str(lon.df)
