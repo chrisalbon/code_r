@@ -262,4 +262,4 @@ vs.11 = ggplot(wiki.vs, aes(x = use.wiki, y = Freq, fill = like.wiki)) + geom_ba
 
 grid.arrange(vs.1, vs.2, vs.3, vs.4, vs.5, vs.6, vs.7, vs.8, vs.9, vs.10, vs.11, nrow=6)
 
-dev.off()
+

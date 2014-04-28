@@ -119,4 +119,3 @@ ggplot(PlantGrowth, aes(x=group, y=weight)) +
   theme_bw() +
   # draw axis line with a strong line and the x-y corner being a square
   theme(panel.border = element_blank(), axis.line = element_line(colour="black", size=2, lineend="square"))
-

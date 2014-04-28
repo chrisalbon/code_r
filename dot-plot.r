@@ -14,7 +14,7 @@ dev.off()
 countries2009 <- subset(countries, Year==2009 & healthexp>2000)
 
 # create the ggplot2 data
-p <- ggplot(countries2009, aes(x=  infmortality))
+p <- ggplot(countries2009, aes(x = infmortality))
 
 # create the dotplot layer
 p + geom_dotplot(binwidth=.25) + 
