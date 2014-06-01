@@ -52,7 +52,7 @@ pos.words <- scan("/Users/chrisralbon/cra/cra_projects/code_r/data/opinion-lexic
 neg.words <- scan("/Users/chrisralbon/cra/cra_projects/code_r/data/opinion-lexicon-English/negative-words.txt", what="character", comment.char=";")
 
 # create some simulated test data
-test <- c("I really hate it when you die like that. You suck.", "I love love love you", "Go to hell")
+test <- c("I really hate it when you die like that. You suck.", "I love love love you", "Go to hell", "thisisntoawordboogle")
 
 # create a sentiment score for the test data
 test.results <- score.sentiment(test, pos.words, neg.words); test.results
