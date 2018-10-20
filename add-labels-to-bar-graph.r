@@ -14,7 +14,8 @@ ggplot(cabbage_exp, aes(x=interaction(Date, Cultivar), y=Weight)) +
   # draw the bar plot
   geom_bar(stat="identity") +
   # create the weight text above the bar in white
-  geom_text(aes(label=Weight), vjust=1.5, colour="white")
+  geom_text(aes(label=Weight), vjust=1.5, colour="white") +
+    ggtitle("My title",subtitle = "mysubtitle")
 
 # above the top
 
@@ -23,7 +24,8 @@ ggplot(cabbage_exp, aes(x=interaction(Date, Cultivar), y=Weight)) +
   # draw the bar plot
   geom_bar(stat="identity") +
   # create the weight text below the bar in white
-  geom_text(aes(label=Weight), vjust=-0.2)
+  geom_text(aes(label=Weight), vjust=-0.2) +
+     ggtitle("My title",subtitle = "mysubtitle")
 
 # labels on a grouped bar chart
 
@@ -33,4 +35,5 @@ ggplot(cabbage_exp, aes(x=Date, y=Weight, fill=Cultivar)) +
   geom_bar(stat="identity", position="dodge") +
   # create the label, "dodged" to fit the bars
   geom_text(aes(label=Weight), vjust=1.5, colour="white",
-            position=position_dodge(.9), size=3)
+            position=position_dodge(.9), size=3) +
+              ggtitle("My title",subtitle = "mysubtitle")
